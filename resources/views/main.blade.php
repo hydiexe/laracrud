@@ -30,19 +30,19 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" href="">Laracrud</a>
-                <a class="navbar-brand hidden" href="">S</a>
+                <a class="navbar-brand hidden" href="">L</a>
             </div>
  
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href=""> <i class="menu-icon fa fa-dashboard"></i>Beranda </a>
+                        <a href="{{ url('home') }}"> <i class="menu-icon fa fa-dashboard"></i>Beranda </a>
                     </li>
                     <li>
-                        <a href=""> <i class="menu-icon fa fa-puzzle-piece"></i>Jenjang </a>
+                        <a href="{{ url('edulevels') }}"> <i class="menu-icon fa fa-puzzle-piece"></i>Jenjang </a>
                     </li>
                     <li>
-                        <a href=""> <i class="menu-icon fa fa-puzzle-piece"></i>Program </a>
+                        <a href="{{ url('programs') }}"> <i class="menu-icon fa fa-puzzle-piece"></i>Program </a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
