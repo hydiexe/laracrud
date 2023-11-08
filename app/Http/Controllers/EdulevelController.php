@@ -43,4 +43,8 @@ class EdulevelController extends Controller
             ]);
         return redirect('edulevels')->with('status', 'Data Jenjang Berhasil Diedit');
     }
+    public function delete($id) {
+        DB::table('edulevels')->where('id', $id)->delete();
+        return redirect('edulevels')->with('status', 'Data Jenjang Berhasil Dihapus');
+    }
 }
