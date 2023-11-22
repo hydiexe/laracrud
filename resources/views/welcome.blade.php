@@ -87,8 +87,8 @@
                 <div class="links">
                     <a href="{{ url('/') }}">Welcome</a>
                     <a href="{{ url('/home') }}">Beranda</a>
-                    <a href="">Jenjang</a>
-                    <a href="">Program</a>
+                    <a href="{{ url('/edulevels') }}">Jenjang</a>
+                    <a href="{{ url('/programs') }}">Program</a>
                 </div>
             </div>
         </div>
