@@ -68,12 +68,11 @@
                                 <a href="{{ url('programs/'.$item->id) }}" class="btn btn-warning btn-sm">
                                     <i class="fa fa-eye"></i>
                                 </a>
-                                <a href="{{ url('programs/edit/'.$item->id) }}" class="btn btn-primary btn-sm">
+                                <a href="{{ url('programs/'.$item->id.'/edit') }}" class="btn btn-primary btn-sm">
                                     <i class="fa fa-pencil"></i>
                                 </a>
                                 <form action="{{ url('programs/'.$item->id) }}" method="post" class="d-inline"
-                                    onsubmit="return 
-                                    confirm('Apakah anda yakin akan hapus data?')">
+                                    onsubmit="return confirm('Apakah anda yakin akan hapus data?')">
                                     @method('delete')
                                     @csrf
                                     <button class="btn btn-danger btn-sm">

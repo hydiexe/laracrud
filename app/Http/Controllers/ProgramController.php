@@ -52,11 +52,12 @@ class ProgramController extends Controller
         $program->name = $request->name;
         $program->edulevel_id = $request->edulevel_id;
         $program->student_price = $request->student_price;
-        $program-student_max = $request->student_max;
+        $program->student_max = $request->student_max;
         $program->info = $request->info;
         $program->save();
 
-        $return redirect('programs')->with('status', 'Program berhasil ditambahkan');
+        return redirect('programs')->with('status', 'Program berhasil ditambahkan');
+        // 
     }
 
     /**
@@ -80,7 +81,8 @@ class ProgramController extends Controller
      */
     public function edit(Program $program)
     {
-        //
+        $edulevels = Edulevel::all();
+        return view('program.edit', compact('program', 'edulevels'));
     }
 
     /**
@@ -92,7 +94,24 @@ class ProgramController extends Controller
      */
     public function update(Request $request, Program $program)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:5',
+            'edulevel_id' => 'required',
+        ], [
+            'name.required' => 'Nama Program tidak boleh kosong.',
+            'edulevel_id.required' => 'Jenjang tidak boleh kosong.',
+        ]);
+        // return $request;
+
+        $program->name = $request->name;
+        $program->edulevel_id = $request->edulevel_id;
+        $program->student_price = $request->student_price;
+        $program->student_max = $request->student_max;
+        $program->info = $request->info;
+        $program->save();
+
+        return redirect('programs')->with('status', 'Program berhasil diedit');
+        
     }
 
     /**
@@ -103,6 +122,8 @@ class ProgramController extends Controller
      */
     public function destroy(Program $program)
     {
-        //
+        $program->delete();
+        
+        return redirect('programs')->with('status', 'Program berhasil dihapus');
     }
 }
