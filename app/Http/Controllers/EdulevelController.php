@@ -19,6 +19,14 @@ class EdulevelController extends Controller
 
     }
     public function addProcess(Request $request) {
+        $request->validate([
+            'name' => 'required|min:2',
+            'desc' => 'required',
+        ], [
+            'name.required' => 'Nama jenjang tidak boleh kosong.',
+            'desc.required' => 'Keterangan tidak boleh kosong.',
+        ]);
+
         DB::table('edulevels')->insert(
             [
                 'name' => $request -> name,
@@ -32,10 +40,14 @@ class EdulevelController extends Controller
         return view('edulevel/edit', compact('edulevel'));
     }
     public function editProcess(Request $request, $id) {
-        // $request->validate([
-        //     'nama' => 'required|min:2',
-        //     'desc' => 'required',
-        // ]);
+        $request->validate([
+            'name' => 'required|min:2',
+            'desc' => 'required',
+        ], [
+            'name.required' => 'Nama jenjang tidak boleh kosong.',
+            'desc.required' => 'Keterangan tidak boleh kosong.',
+        ]);
+
         DB::table('edulevels')->where('id', $id)
             ->update([
                 'name' => $request -> name,
