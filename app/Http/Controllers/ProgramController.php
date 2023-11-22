@@ -46,7 +46,17 @@ class ProgramController extends Controller
             'name.required' => 'Nama Program tidak boleh kosong.',
             'edulevel_id.required' => 'Jenjang tidak boleh kosong.',
         ]);
-        return $request;
+        // return $request;
+
+        $program = new Program;
+        $program->name = $request->name;
+        $program->edulevel_id = $request->edulevel_id;
+        $program->student_price = $request->student_price;
+        $program-student_max = $request->student_max;
+        $program->info = $request->info;
+        $program->save();
+
+        $return redirect('programs')->with('status', 'Program berhasil ditambahkan');
     }
 
     /**
