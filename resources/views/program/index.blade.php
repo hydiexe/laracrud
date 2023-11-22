@@ -52,7 +52,7 @@
                             <th>No.</th>
                             <th>Nama Program</th>
                             <th>Jenjang</th>
-                            <th>Info</th>
+                            {{-- <th>Info</th> --}}
                             <th></th>
                         </tr>
                     </thead>
@@ -63,12 +63,17 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->edulevel->name }}</td>
-                            <td>{{ $item->info }}</td>
+                            {{-- <td>{{ $item->info }}</td> --}}
                             <td class="text-center">
+                                <a href="{{ url('programs/'.$item->id) }}" class="btn btn-warning btn-sm">
+                                    <i class="fa fa-eye"></i>
+                                </a>
                                 <a href="{{ url('programs/edit/'.$item->id) }}" class="btn btn-primary btn-sm">
                                     <i class="fa fa-pencil"></i>
                                 </a>
-                                <form action="{{ url('programs/'.$item->id) }}" method="post" class="d-inline" onsubmit="return confirm('Apakah anda yakin akan hapus data?')">
+                                <form action="{{ url('programs/'.$item->id) }}" method="post" class="d-inline"
+                                    onsubmit="return 
+                                    confirm('Apakah anda yakin akan hapus data?')">
                                     @method('delete')
                                     @csrf
                                     <button class="btn btn-danger btn-sm">

@@ -47,7 +47,9 @@ class ProgramController extends Controller
      */
     public function show(Program $program)
     {
-        //
+        $program->makeHidden(['edulevel_id']);
+        // return $program;
+        return view('program/show', compact('program'));
     }
 
     /**
