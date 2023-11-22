@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Program;
+use App\Edulevel;
+
 use Illuminate\Http\Request;
 
 class ProgramController extends Controller
@@ -25,7 +27,8 @@ class ProgramController extends Controller
      */
     public function create()
     {
-        //
+        $edulevels = Edulevel::all();
+        return view('program.create', compact('edulevels'));
     }
 
     /**
@@ -36,7 +39,14 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:5',
+            'edulevel_id' => 'required',
+        ], [
+            'name.required' => 'Nama Program tidak boleh kosong.',
+            'edulevel_id.required' => 'Jenjang tidak boleh kosong.',
+        ]);
+        return $request;
     }
 
     /**

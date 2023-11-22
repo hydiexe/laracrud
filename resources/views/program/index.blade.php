@@ -40,7 +40,7 @@
                     <strong>Data Program</strong>
                 </div>
                 <div class="pull-right">
-                    <a href="{{ url('programs/add') }}" class="btn btn-info btn-sm">
+                    <a href="{{ url('programs/create') }}" class="btn btn-info btn-sm">
                         <i class="fa fa-plus"></i> Tambah Program
                     </a>
                 </div>
