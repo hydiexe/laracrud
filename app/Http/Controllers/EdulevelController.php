@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class EdulevelController extends Controller
 {
     public function data() {
-        $edulevels = DB::table('edulevels')->get();
+        $edulevels = DB::table('edulevels')->simplePaginate(5);
 
         // return $edulevels;
         return view('edulevel.data', ['edulevels' => $edulevels]);
