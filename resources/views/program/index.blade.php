@@ -40,6 +40,9 @@
                     <strong>Data Program</strong>
                 </div>
                 <div class="pull-right">
+                    <a href="{{ url('programs/trash') }}" class="btn btn-danger btn-sm">
+                        <i class="fa fa-trash"></i> Sampah
+                    </a>
                     <a href="{{ url('programs/create') }}" class="btn btn-info btn-sm">
                         <i class="fa fa-plus"></i> Tambah Program
                     </a>
@@ -76,7 +79,7 @@
                                     @method('delete')
                                     @csrf
                                     <button class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash"></i>
+                                        <i class="fa fa-close"></i>
                                     </button>
                                 </form>
                             </td>

@@ -123,7 +123,41 @@ class ProgramController extends Controller
     public function destroy(Program $program)
     {
         $program->delete();
-        
+
         return redirect('programs')->with('status', 'Program berhasil dihapus');
+    }
+
+    public function trash() 
+    {
+
+        $programs = Program::onlyTrashed()->get();
+        return view('program/trash', compact('programs'));
+
+    }
+    public function restore($id = null) 
+    {
+
+        if($id != null) {
+            $programs = Program::onlyTrashed()
+                ->where('id', $id)
+                ->restore();
+        } else {
+            $programs = Program::onlyTrashed()->restore();
+        }
+        return redirect('programs/trash')->with('status', 'Data berhasil dipulihkan');
+
+    }
+    public function delete($id = null) 
+    {
+
+        if($id != null) {
+            $programs = Program::onlyTrashed()
+                ->where('id', $id)
+                ->forceDelete();
+        } else {
+            $programs = Program::onlyTrashed()->forceDelete();
+        }
+        return redirect('programs/trash')->with('status', 'Data berhasil dihapus permanen');
+
     }
 }
